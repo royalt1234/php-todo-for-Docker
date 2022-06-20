@@ -13,7 +13,7 @@ pipeline {
 
         stage ('Checkout Repo'){
             steps {
-            git branch: 'main', url: 'https://github.com/uzukwujp/php-todo.git'
+            git branch: 'main', url: 'https://github.com/royalt1234/php-todo-for-Docker.git'
       }
         }
 
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
 
-                       sh "docker build -t uzukwujp/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                       sh "docker build -t royalt1234/php-todo-for-Docker:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 script {
             sh "docker login -u ${env.username} -p ${env.password}"
 
-            sh "docker push uzukwujp/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            sh "docker push royalt1234/php-todo-for-Docker:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
             }
           }
         }
