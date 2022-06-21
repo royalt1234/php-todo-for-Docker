@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
 
-                       sh "docker run --network php -p 8087:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                       sh "docker run --network php -p 8091:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                 script {
 
                     sh "curl --version"
-                    sh  "curl -I http://3.95.65.147:8087"
+                    sh  "curl -I http://3.95.65.147:8091"
                 }
             }
         }
