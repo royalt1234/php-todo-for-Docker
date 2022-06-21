@@ -26,35 +26,46 @@ pipeline {
             }
         }
 
-        // stage ('Run Container') {
-        //     steps {
-        //         script {
+        stage ('Run Container') {
+            steps {
+                script {
 
-        //                sh "docker run --network php -p 8090:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
-        //         }
-        //     }
-        // }
+                       sh "docker run --network php -p 8087:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                }
+            }
+        }
 
-         stage ('Test-Stage-Curl') {
+        stage ('Test-Stage-Curl') {
             steps {
                 script {
 
                     sh "curl --version"
-                    sh  "curl -I http://3.95.65.147:8090"
+                    sh  "curl -I http://3.95.65.147:8087"
                 }
             }
         }
 
 
-        // stage ('Push Docker Image') {
-        //     steps{
-        //         script {
-        //     sh "docker login -u ${env.username} -p ${env.password}"
+        stage ('Push Docker Image') {
+            steps{
+                script {
+            sh "docker login -u ${env.username} -p ${env.password}"
 
-        //     sh "docker push royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
-        //     }
-        //   }
-        // }
+            sh "docker push royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            }
+          }
+        }
+
+
+        stage ('Clean Up') {
+            steps{
+                script {
+
+            sh "docker system prune -af"
+
+          }
+        }
+
 
         stage ('logout Docker') {
             steps {
