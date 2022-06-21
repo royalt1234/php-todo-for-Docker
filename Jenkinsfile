@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
 
-                       sh "sudo docker build -t royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                       sh "docker build -t royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
                 }
             }
         }
@@ -29,9 +29,9 @@ pipeline {
         stage ('Push Docker Image') {
             steps{
                 script {
-            sh "sudo docker login -u ${env.username} -p ${env.password}"
+            sh "docker login -u ${env.username} -p ${env.password}"
 
-            sh "sudo docker push royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            sh "docker push royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
             }
           }
         }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
 
-                    sh "sudo docker logout"
+                    sh "docker logout"
 
                 }
             }
