@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
 
-                       sh "docker build -t royalt1234/php-todo-for-Docker:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                       sh "docker build -t royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
                 }
             }
         }
