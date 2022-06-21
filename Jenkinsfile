@@ -26,21 +26,21 @@ pipeline {
             }
         }
 
-        stage ('Run Container') {
-            steps {
-                script {
+        // stage ('Run Container') {
+        //     steps {
+        //         script {
 
-                       sh "docker run --network php -p 8090:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
-                }
-            }
-        }
+        //                sh "docker run --network php -p 8090:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+        //         }
+        //     }
+        // }
 
          stage ('Test-Stage-Curl') {
             steps {
                 script {
 
                     sh "curl --version"
-                    sh  "curl  http://3.95.65.147:8090"
+                    sh  "curl -I http://3.95.65.147:8090"
                 }
             }
         }
