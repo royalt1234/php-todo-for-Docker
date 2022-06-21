@@ -40,7 +40,7 @@ pipeline {
                 script {
 
                     sh "curl --version"
-                    sh  "curl  http://3.95.65.147:8000"
+                    sh  "curl  http://3.95.65.147:8085"
                 }
             }
         }
