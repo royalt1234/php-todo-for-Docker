@@ -7,8 +7,8 @@ pipeline {
             steps {
             dir("${WORKSPACE}") {
               deleteDir()
+                }
             }
-          }
         }
 
         stage ('Checkout Repo'){
@@ -42,6 +42,7 @@ pipeline {
 
                     sh "curl --version"
                     sh  "curl -I http://3.95.65.147:8060"
+                    sh  "curl -I http://3.95.65.147:8060"
                 }
             }
         }
@@ -53,8 +54,8 @@ pipeline {
             sh "docker login -u ${env.username} -p ${env.password}"
 
             sh "docker push royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+                }
             }
-          }
         }
 
 
@@ -64,8 +65,8 @@ pipeline {
 
             sh "docker system prune -af"
 
-          }
-        }
+                }
+            }
         }
 
 
