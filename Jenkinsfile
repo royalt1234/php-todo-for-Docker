@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
 
-                       sh "docker run -p 8000:8000 royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                       sh "docker run -p 8000:8000 -d royalt/darey.io:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
                 }
             }
         }
